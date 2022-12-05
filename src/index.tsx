@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import axios from "axios";
 import { Provider } from "react-redux";
@@ -9,13 +9,13 @@ import {
   searchRepositoriesSuccess,
   searchRepository,
 } from "./redux/state/reducers/repositories";
+import "./index.css";
+
+import CodeCell from "./component/CodeCell";
 
 const App = () => {
   const [phrase, setPhrase] = useState("");
-
-  const repos = useAppSelector((state) => state.repositories);
-
-  console.log("reposs =>", repos);
+  // const repos = useAppSelector((state) => state.repositories);
 
   const dispatch = useAppDispatch();
 
@@ -50,21 +50,18 @@ const App = () => {
       }
     }
   };
+
   return (
     <div className="input-wrapper">
-      <form onSubmit={handleSubmit}>
-        <input type="text" onChange={onChange} value={phrase} />
-        <button type="submit">Submit</button>
-      </form>
-      {repos.loading && <div>Loading...</div>}
-      {!repos.loading && repos.error && <div>{repos.error}</div>}
-      {!repos.loading && repos.data.length ? <div>{repos.data}</div> : null}
+      <CodeCell />
     </div>
   );
 };
+
 const root = ReactDOM.createRoot(
   document.querySelector("#root") as HTMLElement
 );
+
 // const root = ReactDOM.createRoot
 root.render(
   <React.StrictMode>
