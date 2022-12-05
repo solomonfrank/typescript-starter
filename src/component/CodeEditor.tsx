@@ -3,6 +3,7 @@ import Editor from "@monaco-editor/react";
 import * as monaco from "monaco-editor";
 import prettier from "prettier";
 import parser from "prettier/parser-babel";
+// import { Resizable } from "react-resizable";
 
 interface ICodeEditorProp {
   initialValue: string;
@@ -34,13 +35,15 @@ const CodeEditor: React.FC<ICodeEditorProp> = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div>
-      <button onClick={formatCode}>Format</button>
+    <div className="code-editor-wrapper">
+      <button className="format-btn" onClick={formatCode}>
+        Format
+      </button>
       <Editor
         // onChange={handleEditorChange}
         value={initialValue}
         onChange={handleEditorChange}
-        height="500px"
+        height="100%"
         defaultLanguage="javascript"
         defaultValue="// some comment"
         theme="vs-dark"
