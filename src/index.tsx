@@ -12,6 +12,7 @@ import {
 import "./index.css";
 
 import CodeCell from "./component/CodeCell";
+import MarkDownEditor from "./component/TextEditor";
 
 const App = () => {
   const [phrase, setPhrase] = useState("");
@@ -53,7 +54,8 @@ const App = () => {
 
   return (
     <div className="input-wrapper">
-      <CodeCell />
+      <MarkDownEditor />
+      {/* <CodeCell /> */}
     </div>
   );
 };
